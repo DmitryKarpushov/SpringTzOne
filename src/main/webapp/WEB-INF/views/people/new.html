@@ -3,15 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>New person</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+<style>
+    .b1 {
+        background: green; /* Синий цвет фона */
+        color: white; /* Белые буквы */
+        font-size: 9pt; /* Размер шрифта в пунктах */
+    }
+</style>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/people" class="navbar-brand">Spring MVC</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav"><!--Именно навигация -->
+                <li class="active"><a href="/people">Главная</a></li>
+                <li ><a href="/books">Каталог книг</a></li>
+                <li ><a href="/people/new">Создание нового пользователя</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <label for="fullName">Введите ФИО: </label>
+    <input type="text" th:field="*{fullName}" id="fullName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Full Name Error</div>
     <br/>
-    <input type="submit" value="Create!"/>
+    <label for="yearOfBirth">Введите год рождения: </label>
+    <input type="text" th:field="*{yearOfBirth}" id="yearOfBirth"/>
+    <div style="color:red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Year of birth Error</div>
+    <br/>
+
+
+    <input type="submit" class="b1" value="Добавить" />
 </form>
 
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<hr>
+<footer>
+    <p>&copy; Все права защищены 2022</p>
+</footer>
 </body>
 </html>
